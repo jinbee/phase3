@@ -62,7 +62,7 @@ class PicturesController < ApplicationController
     end
 
     if @picture.save
-#     ConfirmMailer.confirm_mail(@confirm_mail).deliver 
+     ConfirmMailer.confirm_mail(@confirm_mail).deliver 
 #     img = MiniMagick::Image.open('./public' + @picture.image.thumb.url)
 #     create_square_image(img,150)
 #     img.write './public' + @picture.image.thumb.url
