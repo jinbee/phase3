@@ -1,0 +1,35 @@
+<div class="row section recentworks topspace">
+	<%= notice %>
+	<h2 class="section-title"><span>Pictures</span></h2>
+
+		    <% if @picture.empty? %>
+				<div class="text-center">画像はありません。</div>
+		    <% end %>
+			
+			<div class="thumbnails recentworks row">
+
+              <% @picture.each do |pic| %>
+
+				<div class="col-xs-12 col-sm-6 col-md-4 col-lg-4">
+
+                  <%= link_to picture_path(pic.id), class: "thumbnail" do %>
+				    <span class="img">
+						<%= image_tag pic.image.thumb,alt: '' %>
+						<% if @favorite.include?(pic.id) %>
+						  <span class="cover"><span class="more">Favorite in &rarr;</span></span>
+						<% else %>
+						  <span class="cover"><span class="more">See details &rarr;</span></span>
+						<% end %>
+
+					</span>
+					<span class="title"><%= pic.title %></span>
+                  <% end %>
+
+					<span class="details"><%= pic.updated_at.to_formatted_s(:ymd_hi) %></span>
+					<h4></h4>
+					<p></p>
+				</div>
+               <% end %>
+			</div>
+
+		</div> <!-- /section -->

@@ -1,0 +1,30 @@
+         <% if @instagra.errors.any? %>
+             <% @instagra.errors.full_messages.each do |msg| %>
+              <div id="errormessage"><%= msg %></div>
+             <% end %>
+         <% end %>
+
+          <%= form_with(model: @instagra , local:true , url: new_or_edit ,id: :commentform) do |form| %>
+
+             <div class="field">
+              <%= form.label :image %>
+    
+              <%= image_tag(@instagra.image.url) if @instagra.image.url %>
+              <%= form.file_field :image, id: :instagra_image %>
+              <%= form.label :remove_image %>
+              <%= form.check_box :remove_image %>
+
+             </div>
+             <div class="form-group">
+              	<label for="inputComment">Title</label>
+               <%= form.text_field :title ,class:"form-control" %>
+             </div>
+             <div class="form-group">
+              	<label for="inputComment">Comment</label>
+               <%= form.text_field :content ,class:"form-control" %>
+             </div>
+             
+            <div class="text-center">
+             <%= form.submit 'POST' , class:"btn btn-action"%>
+            </div>
+          <% end %>

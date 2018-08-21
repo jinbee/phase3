@@ -1,0 +1,37 @@
+<div class="row">
+  <div class="col-md-12">
+
+    <% if notice %>
+      <div class="alert alert-info" role="alert">
+        <i class="fa fa-check" aria-hidden="true"></i>
+        <%= notice %>
+      </div>
+    <% end %>
+    
+    <% if @user.present? %>
+        <table  class="table table-striped">
+            <tr><th>Name</th><th>Mail</th><th></th></tr>
+            <% @user.each do  |u| %>
+               <tr>
+                <td><%= u.name %></td>
+            	<td><%= u.email %></td>
+            	<td>
+		         <% if logged_in? %> 
+                  <% if u.email == current_user.email %>
+                   <%= link_to '編集' , edit_user_path(u.id) %>
+                   <%= link_to '削除' , user_path(u.id),method: :delete,data:{confirm:'OK?'} %>
+                  <% end %>
+                 <% end %>
+            	</td>
+               </tr>
+            <% end %>
+        </table>
+    <% end %>
+
+     <div class="text-center">
+       <%= link_to 'ユーザ追加' , new_user_path , class: "btn btn-primary" %>
+     </div>   
+
+  </div>  
+</div>
+<div class="clearfix"></div>

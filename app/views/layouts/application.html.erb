@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+  	<meta name="viewport"    content="width=device-width, initial-scale=1.0">
+  	<meta name="description" content="">
+  	<meta name="author"      content="Sergey Pozhilov (GetTemplate.com)">
+   	<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Alice|Open+Sans:400,300,700">
+
+
+
+    <title>Phase3 Acheve</title>
+
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+<bod>
+<header id="header">
+	<div id="head" class="parallax" parallax-speed="2">
+		<h1 id="logo" class="text-center">
+			<img class="img-circle" src="<%= asset_path "avatar_man.png" %>" alt="">
+			<span class="title">練習</span>
+			<span class="tagline">RailsとかBootStrapとか</span>
+			<% if logged_in? %>
+				<span class="tagline">ログイン中：<%= @current_user.name %></span>
+			<% end %>
+		</h1>
+	</div>
+
+	<nav class="navbar navbar-default">
+		<div class="container-fluid">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"> 
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span> 
+				<span class="icon-bar"></span>
+				</button>
+
+			</div>
+			
+			<div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+				
+				<ul class="nav navbar-nav">
+
+					<li><%= link_to 'Top', pictures_path  %></li>
+					<li><%= link_to '新規投稿' , new_picture_path  %></li>
+					<li><%= link_to '投稿一覧' , list_pictures_path %></li>
+					<li><%= link_to 'ログインユーザ管理' , users_path %></li>
+					<li><%= link_to 'MyPage' , mypage_pictures_path %></li>			
+					<% if logged_in? %>
+						<li><%= link_to 'お気に入り' , fav_pictures_path %></li>	
+						<li><%= link_to 'Logout' ,session_path(current_user.id), method: :delete %></li>
+					<% end %>
+				</ul>
+			
+			</div><!--/.nav-collapse -->			
+		</div>	
+	</nav>
+
+
+
+</header>
+  <main id="main">  
+  	<div class="container">
+
+
+
+      <%= yield %>
+
+    
+  	</div>
+  </main>
+  
+<footer id="footer" class="topspace">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 widget">
+				<h3 class="widget-title">About</h3>
+				<div class="widget-body">
+					<p>	Dive into Code Achieve</p>
+						
+				</div>
+			</div>
+
+
+			<div class="col-md-6 widget">
+				<h3 class="widget-title">Form widget</h3>
+				<div class="widget-body">
+					<p>
+						<a href="mailto:#">some.email@somewhere.com</a><br>
+						<br>
+						此方より彼方まで
+					</p>	
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>
+
+<footer id="underfooter">
+	<div class="container">
+		<div class="row">
+
+			<div class="col-md-12 widget">
+				<div class="widget-body">
+					<p class="text-center">
+						すんばらしーテンプレ作って頂いた方に多謝<br> 
+						Design: <a href="http://www.gettemplate.com" rel="designer">Initio by GetTemplate</a> </p>
+				</div>
+			</div>
+
+		</div> <!-- /row of widgets -->
+	</div>
+</footer>  
+  </body>
+</html>

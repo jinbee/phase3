@@ -1,0 +1,28 @@
+
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+          <%= form_with(model:@picture , url:pictures_path,local:true) do |form| %>											
+ 				<article class="post">
+					<header class="entry-header">
+ 						<h1 class="entry-title"><%= @picture.title %></h1>
+					</header> 
+					<div class="entry-content"> 
+						<p><%= image_tag(@picture.image) %></p>
+
+						<p><%= @picture.comment %></p>
+					</div>
+
+				<%= form.hidden_field :image_cache %>
+				<%= form.hidden_field :title %>
+				<%= form.hidden_field :comment %>
+			<div class="text-center">		
+              <span ><%= form.submit '投稿', name:'save' , class: "btn btn-outline-primary"  %></span>
+              <span ><%= form.submit '戻る', name:'back' , class: "btn btn-outline-danger" %></span>
+            </div>
+				</article><!-- #post-## -->
+          <% end %>
+			</div> 
+		</div> <!-- /row post  -->
+
+
+		<div class="clearfix"></div>

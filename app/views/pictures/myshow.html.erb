@@ -1,0 +1,39 @@
+		<div class="row topspace">
+			<div class="col-sm-8 col-sm-offset-2">
+			<%= notice %>
+
+ 				<article class="post">
+					<header class="entry-header">
+						<div class="entry-meta"> 
+ 							<span class="posted-on"><time class="entry-date published"><%= @picture.updated_at.to_formatted_s(:ymd_hi) %></time></span>			
+ 						</div> 
+ 					<h1 class="entry-title"><%= @picture.title %></h1>
+					</header> 
+					<div class="entry-content"> 
+						<p><%= image_tag @picture.image %></p>
+
+						<p><%= @picture.comment %></p>
+					</div>
+
+
+				<div class="text-center">
+
+					 <span ><%= link_to 'EDIT' , edit_picture_path(@picture.id) , class: "btn btn-outline-primary" %></span>
+				     <span ><%= link_to 'DELETE' , picture_path(@picture.id),method: :delete , data:{confirm:'削除しますか?'} , class: "btn btn-outline-danger"%></span>									
+
+				</div>
+				<div class="text-center">
+
+					    <%= link_to 'back', mypage_pictures_path, class: 'btn' %>
+
+				</div>
+				</article>
+
+			</div> 
+		</div> 
+
+
+		<div class="clearfix"></div>
+
+
+
